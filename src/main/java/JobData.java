@@ -5,10 +5,7 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by LaunchCode
@@ -82,6 +79,30 @@ public class JobData {
 
         return jobs;
     }
+///**
+  //   * Search for the specified value in the given column.
+  //   *
+  //   * @param column The column to search
+  //  * @return List of jobs with the specified value in the specified column
+  //   */
+    //public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
+
+        // load data, if not already loaded
+   //     loadData();
+
+  //      ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+  //      for (HashMap<String, String> row : allJobs) {
+ //           String columnValue = row.get(column);
+
+            // Case-insensitive comparison
+ //          if (columnValue != null && columnValue.toLowerCase().contains(value.toLowerCase())) {
+   //             jobs.add(row);
+  //          }
+  //      }
+
+  //      return jobs;
+  //  }
 
     /**
      * Search all columns for the given term
@@ -89,14 +110,30 @@ public class JobData {
      * @param value The search term to look for
      * @return      List of all jobs with at least one field containing the value
      */
-    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+    ///public static ArrayList<HashMap<String, String>> findByValue(String value) {
+/**
+ * Search all columns for the given term.
+ *
+ * @param value The search term to look for
+ * @return List of all jobs with at least one field containing the value
+ */
+public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
-        // load data, if not already loaded
-        loadData();
+    // TODO - implement this method
+    ArrayList<HashMap<String,String>> jobs = new ArrayList<>();
 
-        // TODO - implement this method
-        return null;
+    for(HashMap<String,String> job : allJobs){
+        //loop through job pairs if currentIndex = search term it is added to the array
+        for( Map.Entry<String,String> index : job.entrySet()) {
+            if(index.getValue().toLowerCase().contains(value.toLowerCase())) {
+                jobs.add(job);
+            }
+        }
     }
+
+
+    return jobs;
+}
 
     /**
      * Read in data from a CSV file and store it in a list
