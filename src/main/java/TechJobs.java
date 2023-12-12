@@ -59,10 +59,11 @@ public class TechJobs {
 
                 // What is their search term?
                 System.out.println("\nSearch term:");
-                String searchTerm = in.nextLine();
+                String searchTerm = in.nextLine().toLowerCase();
 
-                if (searchField.equals("all")) printJobs( JobData.findByValue( searchTerm.toLowerCase() ) );
-                else {
+                if (searchField.equals("all")) {
+                    printJobs(JobData.findByValue(searchTerm.toLowerCase()));
+                } else {
                     printJobs(JobData.findByColumnAndValue(searchField.toLowerCase(), searchTerm.toLowerCase()));
                 }
             }
@@ -117,10 +118,6 @@ public class TechJobs {
     }
 
     // Print a list of jobs
-    //public class TechJobs {
-
-
-
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
         // loop through the array
         if(someJobs.size() == 0){
@@ -142,53 +139,3 @@ public class TechJobs {
         //System.out.println("printJobs is not implemented yet");
     }
 }
-
-
-
-        //class JobSearch {
-
-//            // Assuming you have an ArrayList of jobs
-//           // private ArrayList<HashMap<String, String>> jobs;
-//
-//            // Other methods and class members
-//
-//            // Method to print jobs
-//            //public void printJobs() {
-//                // Check if there are jobs to print
-//                if (jobs.isEmpty()) {
-//                    System.out.println("Search term:");
-//                    System.out.println("Example Search Term with No Results");
-//                    System.out.println("No Results");
-//                } else {
-//                    // Iterate over the ArrayList of jobs
-//                    for (HashMap<String, String> job : jobs) {
-//                        // Print asterisks before each job
-//                        System.out.println("*****");
-//
-//                        // Print job details
-//                        System.out.println("position type: " + job.get("PositionType"));
-//                        System.out.println("name: " + job.get("Name"));
-//                        System.out.println("employer: " + job.get("Employer"));
-//                        System.out.println("location: " + job.get("location"));
-//                        System.out.println("core competency: " + job.get("Skill"));
-//
-//                        // Print asterisks after each job and add a blank line
-//                        System.out.println("*****\n");
-//                    }
-//                }
-//            }
-//
-//            // Other methods and class members
-//        }
-//
-//        System.out.println("printJobs is not implemented yet");
-//        JobData jobData = new JobData();
-//
-//        // Your search term
-//        String searchTerm = "JavaScript";
-//
-//        // Call the non-static method on the instance
-//        jobData.printJobs(jobData.findByValue(searchTerm));
-//    }
-//    }
-//
